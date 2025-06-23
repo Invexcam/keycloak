@@ -25,7 +25,7 @@ services:
       - DB_DATABASE=keycloak
       - DB_USER=keycloak
       - DB_PASSWORD=keycloak2025
-    command: start-dev --proxy-headers
+    command: start-dev --proxy-headers=forwarded
     ports:
       - "8088:8080"
     depends_on:
