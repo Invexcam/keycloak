@@ -14,10 +14,8 @@ services:
       - "5434:5432"
     restart: unless-stopped
 
-services:
   keycloak:
     image: quay.io/keycloak/keycloak:latest
-    command: start-dev --proxy-headers
     container_name: keycloak
     environment:
       - KEYCLOAK_ADMIN=admin
@@ -27,10 +25,7 @@ services:
       - DB_DATABASE=keycloak
       - DB_USER=keycloak
       - DB_PASSWORD=keycloak2025
-    command:
-      - start
-      - --optimized
-      - --proxy=edge
+    command: start-dev --proxy-headers
     ports:
       - "8088:8080"
     depends_on:
@@ -42,8 +37,3 @@ services:
 volumes:
   postgres_data:
   keycloak_data:
-
-
-
-
-  
